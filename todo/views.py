@@ -7,6 +7,6 @@ from todo.models import Task
 
 
 def index(request):
-    def index(request):
-    tasks = Task.objects.all()
+    asks = Task.objects.all()
     return render(request, 'todo/index.html', {'tasks': tasks})
+    
