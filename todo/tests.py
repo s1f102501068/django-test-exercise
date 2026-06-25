@@ -34,7 +34,7 @@ class TaskModelTestCase(TestCase):
         task = Task(title='task1', due_at=due)
         task.save()
 
-        self.assertFalse(task.is_overdue)
+        self.assertFalse(task.is_overdue())
         
     def test_is_overdue_past(self):
         due = timezone.make_aware(datetime(2024, 6, 30, 23, 59, 59))
