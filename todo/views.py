@@ -14,17 +14,14 @@ def index(request):
         )
         task.save()
 
-    order = request.GET.get('order')
-    if order == 'post':
-        tasks = Task.objects.order_by('-id')
-    elif order == 'due':
+    if request.GET.get('order') == 'due':
         tasks = Task.objects.order_by('due_at')
     else:
-        tasks = Task.objects.all()
+        tasks = Task.objects.order_by('-posted_at')
 
     context = {
         'tasks': tasks
     }
     return render(request, 'todo/index.html', context)
-    
+
 
